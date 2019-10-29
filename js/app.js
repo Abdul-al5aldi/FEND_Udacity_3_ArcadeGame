@@ -10,18 +10,16 @@ var Enemy = function (x, y) {
     this.height = 65;
     this.width = 95;
     this.collision = false;
-    this.speed = Math.floor(Math.random() * 5 )+1;
+    this.speed = Math.floor(Math.random() * 5) + 1;
 };
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function (dt) {
 
     if (this.x > ctx.canvas.width + this.width) {
-        this.x = -100 * Math.floor(Math.random()*4) + 1;
-        this.speed = Math.floor(Math.random() * 5 )+1;
+        this.x = -100 * Math.floor(Math.random() * 4) + 1;
+        this.speed = Math.floor(Math.random() * 5) + 1;
     } else {
-        this.x += this.speed * 50 * (level+1) * dt;
+        this.x += this.speed * 50 * (level + 1) * dt;
     }
 
     // Check for collision
@@ -29,7 +27,7 @@ Enemy.prototype.update = function (dt) {
         this.collision = true;
         level = 0;
         document.querySelector('.level-text span').innerHTML = level;
-        
+
         // Reset player position
         if (player) {
             player.x = 202;
@@ -45,10 +43,6 @@ Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
-
 var Player = function (x, y, sprite) {
     this.x = x;
     this.y = y;
@@ -60,24 +54,22 @@ var Player = function (x, y, sprite) {
 Player.prototype.update = function () {
     if (game && player.y < 40) {
         level++;
-        //reset();
-        console.log('level')
         document.querySelector('.level-text span').innerHTML = level;
         this.x = 202;
         this.y = 400;
 
-        if ( level == 5 )
+        if (level == 5)
             win();
     }
 }
 
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    
+
 }
 
 Player.prototype.handleInput = function (direction) {
-    if(!game) 
+    if (!game)
         return;
 
     const horizontal = 101,
@@ -95,8 +87,7 @@ Player.prototype.handleInput = function (direction) {
 }
 
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// This listens for key presses and sends the keys to Player.handleInput() method.
 document.addEventListener('keyup', function (e) {
     var allowedKeys = {
         37: 'left',
@@ -108,9 +99,8 @@ document.addEventListener('keyup', function (e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
+
 const enemyPosition = [55, 140, 230];
-
-
 
 let player = new Player(202, 400, 'images/char-boy.png');
 
@@ -118,15 +108,14 @@ let allEnemies = enemyPosition.map((y, index) => {
     return new Enemy((-100 * (index + 1)), y);
 })
 
-function collision (px, py, pw, ph, ex, ey, ew, eh) {
+function collision(px, py, pw, ph, ex, ey, ew, eh) {
     return (Math.abs(px - ex) * 2 < pw + ew) && (Math.abs(py - ey) * 2 < ph + eh);
 }
 
 function win() {
-    console.log('Win!');
     document.querySelector('.level-text').innerHTML = "";
     document.querySelector(".win-text").innerHTML =
-    `You Won!`;
+        `You Won!`;
     stop();
 }
 
@@ -137,17 +126,14 @@ function stop() {
 
 function reset() {
     window.location.reload(true);
-    console.log("Reload ...")
 }
 
 
-console.log("Listen ...")
 document.querySelector(".reload").addEventListener('click', reset, true);
 
-
-
-function listQ(){
+function listQ() {
     player.sprite = 'images/' + this.value + '.png';
 }
+
 document.getElementById("char-list").onchange = listQ;
 
