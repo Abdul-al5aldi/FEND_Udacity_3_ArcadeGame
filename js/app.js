@@ -66,7 +66,7 @@ Player.prototype.update = function () {
         this.x = 202;
         this.y = 400;
 
-        if ( level == 3 )
+        if ( level == 1 )
             win();
     }
 }
@@ -76,6 +76,9 @@ Player.prototype.render = function () {
 }
 
 Player.prototype.handleInput = function (direction) {
+    if(!game) 
+        return;
+
     const horizontal = 101,
         vertical = 83;
 
@@ -122,17 +125,20 @@ function win() {
     console.log('Win!');
     document.querySelector('.level-text').innerHTML = "";
     document.querySelector(".win-text").innerHTML =
-    `<h3>You Won!</h3>
-<button id="reload" name="replay" type="button">Replay?</button>`;
+    `You Won!`;
     stop();
-
-    document.querySelector("#reload").addEventListener('click', reset, true);
 }
 
 function stop() {
     allEnemies = [];
+    game = false;
 }
 
 function reset() {
     window.location.reload(true);
+    console.log("Reload ...")
 }
+
+
+console.log("Listen ...")
+document.querySelector(".reload").addEventListener('click', reset, true);

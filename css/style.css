@@ -1,3 +1,75 @@
 body {
     text-align: center;
+    background: #000;
+    font-family: 'Press Start 2P', cursive;    
+}
+
+.wrap {
+    width: 505px;
+    height: 30px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0px 0px 0px 0px;
+}
+
+h1 {
+    color: #FFF;
+    margin: 20px 0px 30px 0px;
+}
+
+.win-text {
+    color: #FF0;
+    font-size: 0.8em;
+    padding: 0px 0px 5px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+.reload {
+    padding: 5px 10px 5px 10px;
+    margin: 0px 0px 0px 0px;
+    display: inline-block;
+    border: 2;
+    background: #000;
+    color: #F00;
+    font-size: 10px;
+    font-family: 'Press Start 2P', cursive;
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.reload:hover{
+    color: white;
+    background-color: red;
+}
+
+.level-text {
+    color: #0F0;
+    font-size: 0.8em;
+    padding: 0px 0px 5px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+footer {
+    color: white;
+    margin-bottom: 6px;
+    margin-top: 0px;
+    padding-top: 0px;
+    font-size: 9px;
+}
+
+footer a {
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.fa-heart:hover {
+    color: red;
+    transition: 0.5s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
