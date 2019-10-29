@@ -9,4 +9,4 @@ Controls:
 - Up Arrow: move up
 
     
-Game can be viewed [Here](https://abdul-al5aldi.github.io/FEND_3/).
+Game can be viewed [Here](https://abdul-al5aldi.github.io/FEND_3/index.html).
