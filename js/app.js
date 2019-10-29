@@ -49,10 +49,10 @@ Enemy.prototype.render = function () {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var Player = function (x, y) {
+var Player = function (x, y, sprite) {
     this.x = x;
     this.y = y;
-    this.sprite = 'images/char-boy.png';
+    this.sprite = sprite;
     this.height = 75;
     this.width = 65;
 }
@@ -66,13 +66,14 @@ Player.prototype.update = function () {
         this.x = 202;
         this.y = 400;
 
-        if ( level == 1 )
+        if ( level == 5 )
             win();
     }
 }
 
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    
 }
 
 Player.prototype.handleInput = function (direction) {
@@ -111,7 +112,7 @@ const enemyPosition = [55, 140, 230];
 
 
 
-const player = new Player(202, 400);
+let player = new Player(202, 400, 'images/char-boy.png');
 
 let allEnemies = enemyPosition.map((y, index) => {
     return new Enemy((-100 * (index + 1)), y);
@@ -142,3 +143,11 @@ function reset() {
 
 console.log("Listen ...")
 document.querySelector(".reload").addEventListener('click', reset, true);
+
+
+
+function listQ(){
+    player.sprite = 'images/' + this.value + '.png';
+}
+document.getElementById("char-list").onchange = listQ;
+
